@@ -1,0 +1,168 @@
+main {
+  width: 80%;
+  min-height: calc(100vh - 60px);
+  margin: 0 auto;
+}
+
+.switching-header-area {
+  width: 60%;
+  margin: 10px auto;
+  padding: 5px 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  text-align: center;
+  background-color: black;
+}
+
+.switching-header-area a {
+  display: block;
+  flex: 45%;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
+.switching-header-area .active {
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+}
+
+.daily-days-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  margin: 20px 0;
+}
+
+.daily-days-container .day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background-color: lightgray;
+  padding: 20px 30px;
+  border-radius: 10px;
+}
+
+.day-card span {
+  display: flex;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  background-color: #000;
+  color: #fff;
+}
+
+.daily-days-container .active > span {
+  background-color: #fff;
+  color: #000;
+}
+
+.daily-days-container .active {
+  background-color: #000;
+  color: #fff;
+  font-weight: bold;
+}
+
+.today-tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  gap: 20px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.task .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  color: #000;
+}
+ 
+.task-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.task-details .description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.task-details .action{
+    display: flex;
+    gap: 20px;
+}
+
+.task-details .action a{
+text-decoration: none;
+color: #000;
+background-color: #fff;
+width: 40px;
+height: 40px;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+main{
+  width: 98%;
+}
+
+}
+@media only screen and (max-width: 425px) {
+.daily-days-container{
+  width: 98%;
+}
+
+.daily-days-container .day-card{
+  padding: 15px 10px;
+  gap:10px
+}
+
+}
+
+@media only screen and (max-width: 375px) {
+.daily-days-container{
+  width: 98%;
+}
+
+.daily-days-container .day-card{
+  padding: 15px 5px;
+  gap:10px
+}
+
+.task{
+  font-size: .8rem;
+}
+
+.task .icon{
+  display: none;
+}
+
+}
