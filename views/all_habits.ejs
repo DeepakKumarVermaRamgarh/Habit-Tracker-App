@@ -1,0 +1,80 @@
+<!-- Import the CSS file for the tasks.css file. -->
+<link rel="stylesheet" href="../css/tasks.css">
+
+<!-- The `main` element contains the main content of the page. -->
+<main>
+
+    <!-- The `switching-header-area` element contains the links to switch between the today Habit and weekly habit pages. -->
+    <div class="switching-header-area">
+        <a href="/users/habit">My Schedule</a>
+        <a href="/users/habits" class="active">My Habits</a>
+    </div>
+
+    <!-- The `add-task` element contains the form for creating a new habit. -->
+    <div class="add-task">
+        <form action="/users/habit/create-habit" method="post">
+            <input type="text" name="title" id="title" placeholder="Habit Title" required>
+            <input type="text" name="description" id="description" placeholder="Description" required>
+            <input type="submit" value="Create Habit">
+        </form>
+    </div>
+
+    <!-- The `today-tasks` element contains a list of all the user's habits. -->
+    <div class="today-tasks">
+        <h1>All Tasks</h1>
+
+        <!-- Iterate over the `habits` array and render a task element for each habit. -->
+        <% habits.forEach((habit)=> { %>
+            <div class="task">
+
+                <!-- The `icon` element contains an icon representing a checklist. -->
+                <div class="icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <!-- The `task-details` element contains the details of the task, such as the title, the number of times it has been completed, and a week view of the completion status. -->
+                <div class="task-details">
+
+                    <!-- The `description` element contains the title of the task. -->
+                    <div class="description">
+                        <h2>
+                            <%= habit.title %>
+                        </h2>
+                        <span>
+                            <%= habit.logs.filter(log=> log.status == true).length %> / <%= habit.logs.length %>
+                        </span>
+                    </div>
+
+                    <!-- The `week-view` element contains a week view of the completion status of the task. -->
+                    <div class="week-view">
+
+                        <!-- Iterate over the `habit.logs` array and render a link for each log. The link will be styled differently depending on whether the log is completed or not. -->
+                        <% habit.logs.slice(0).slice(-7).forEach(log=> { %>
+                            <% if (log.status) { %>
+                                <a href="/users/habit/update/<%= habit.id %>" style="background-color: green">
+                                    <%= log.date.substring(8, 11) %>
+                                </a>
+                                <% } else { %>
+                                    <a href="/users/habit/update/<%= habit.id %>" style="background-color: red">
+                                        <%= log.date.substring(8, 11) %>
+                                    </a>
+                                    <% } %>
+                                        <% }) %>
+
+                                            <!-- If there are not enough logs to fill the week view, render empty links. -->
+                                            <% for (let i=habit.logs.length; i < 7; i++) { %>
+                                                <a></a>
+                                                <% } %>
+
+                    </div>
+
+                    <!-- The `delete` element contains a link for deleting the task. -->
+                    <a href="/users/habit/delete/<%= habit.id %>"><i class="fa-solid fa-trash-can fa-lg"
+                            style="color: crimson;"></i></a>
+
+                </div>
+
+            </div>
+            <% }) %>
+    </div>
+</main>

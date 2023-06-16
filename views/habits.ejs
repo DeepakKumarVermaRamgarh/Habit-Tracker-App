@@ -1,0 +1,87 @@
+<!-- Import the CSS file for the home.css file. -->
+<link rel="stylesheet" href="../css/home.css" />
+
+<!-- The `main` element contains the main content of the page. -->
+<main>
+
+    <!-- The `switching-header-area` element contains the links to switch between the Habit and Schedule pages. -->
+    <div class="switching-header-area">
+        <a href="/users/habit" class="active">My Schedule</a>
+        <a href="/users/all-habits">My Habits</a>
+    </div>
+
+    <!-- The `daily-days-container` element is empty because we are only displaying today's tasks. -->
+    <div class="daily-days-container"></div>
+
+    <!-- The `today-tasks` element contains a list of all the user's tasks for today. -->
+    <div class="today-tasks">
+        <h1>Today's Tasks</h1>
+
+        <!-- Iterate over the `habits` array and render a task element for each habit. -->
+        <% habits.forEach((habit)=> { %>
+
+            <!-- The `task` element contains the details of the task, such as the title, the description, and a link for updating the task. -->
+            <div class="task">
+
+                <!-- The `icon` element contains an icon representing a checklist. -->
+                <div class="icon">
+                    <i class="fa-solid fa-list-check"></i>
+                </div>
+
+                <!-- The `task-details` element contains the details of the task, such as the title, the description, and a week view of the completion status. -->
+                <div class="task-details">
+
+                    <!-- The `description` element contains the title of the task. -->
+                    <div class="description">
+                        <h2>
+                            <%= habit.title %>
+                        </h2>
+                        <span>
+                            <%= habit.description %>
+                        </span>
+                    </div>
+
+                    <!-- The `action` element contains a link for updating the task. -->
+                    <div class="action">
+
+                        <!-- Check if the task has been logged for today. -->
+                        <% if (habit.logs.find(log=> log.date === new Date().toDateString())) { %>
+
+                            <!-- Check if the task has been completed for today. -->
+                            <% if (habit.logs.find(log=> log.date === new Date().toDateString()).status) { %>
+
+                                <!-- Render a link for updating the task, with a green background. -->
+                                <a href="/users/habit/update/<%= habit.id %>" style="background-color: green">
+                                    <i class="fa-solid fa-check fa-2x"></i>
+                                </a>
+
+                                <% } else { %>
+
+                                    <!-- Render a link for updating the task, with a red background. -->
+                                    <a href="/users/habit/update/<%= habit.id %>" style="background-color: red">
+                                        <i class="fa-solid fa-xmark fa-2x"></i>
+                                    </a>
+
+                                    <% } %>
+
+                                        <% } else { %>
+
+                                            <!-- Render a link for updating the task, with no background color. -->
+                                            <a href="/users/habit/update/<%= habit.id %>">
+                                                <i class="fa-solid fa-check fa-2x"></i>
+                                            </a>
+
+                                            <% } %>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <% }) %>
+
+    </div>
+</main>
+
+<script src="../js/home.js"></script>

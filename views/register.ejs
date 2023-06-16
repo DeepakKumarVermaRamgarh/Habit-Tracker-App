@@ -1,0 +1,43 @@
+<!-- Import the CSS file for the login.css file. -->
+<link rel="stylesheet" href="../css/login.css">
+
+<!-- The `main` element contains the main content of the page. -->
+<main>
+
+    <!-- The `login-area` element contains a form for registering a new user. -->
+    <div class="login-area">
+        <form action="/users/create" method="post">
+
+            <!-- The `form-group` element contains a label and an input element for the user's name. -->
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" placeholder="John Smith" required>
+            </div>
+
+            <!-- The `form-group` element contains a label and an input element for the user's email address. -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="abc@example.com" required>
+            </div>
+
+            <!-- The `form-group` element contains a label and an input element for the user's password. -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="********">
+            </div>
+
+            <!-- The `button` element contains the Register button. -->
+            <button type="submit">Register</button>
+
+            <!-- The `p` element contains a link to the login page. -->
+            <p>Already have an Account? <a href="/users/login">Login here</a></p>
+
+        </form>
+    </div>
+
+    <!-- The `background-area` element contains an image of a person registering for a service. -->
+    <div class="background-area">
+        <img src="../images/register.png" alt="key-image">
+    </div>
+
+</main>

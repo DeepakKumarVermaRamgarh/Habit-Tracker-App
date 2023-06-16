@@ -1,0 +1,40 @@
+<!-- Import the CSS file for the login.css file. -->
+<link rel="stylesheet" href="../css/login.css">
+
+<!-- The `main` element contains the main content of the page. -->
+<main>
+
+    <!-- The `background-area` element contains an image of a key. -->
+    <div class="background-area">
+        <img src="../images/key.png" alt="key-image">
+    </div>
+
+    <!-- The `login-area` element contains a form for logging in. -->
+    <div class="login-area">
+        <form action="/users/create-session" method="post">
+
+            <!-- The `form-group` element contains a label and an input element for the email address. -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email" placeholder="abc@example.com" required>
+            </div>
+
+            <!-- The `form-group` element contains a label and an input element for the password. -->
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" id="password" placeholder="**********" required>
+            </div>
+
+            <!-- The `button` element contains the Log In button. -->
+            <button type="submit">Log In</button>
+
+            <!-- The `p` element contains a link to the forget password page. -->
+            <p>Forgot Password? <a href="/users/forget-password">Click here</a></p>
+
+            <!-- The `p` element contains a link to the register page. -->
+            <p>Not have an Account? <a href="/users/register">Register here</a></p>
+
+        </form>
+    </div>
+
+</main>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome CDN -->
+    <script defer src="https://kit.fontawesome.com/b1df904c6f.js" crossorigin="anonymous"></script>
+    <!-- noty.js -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+    <title>
+        <%= title %>
+    </title>
+    <%- style %>
+</head>
+
+<body>
+    <%- include('_header') %>
+        <%- body %>
+
+
+            <%- script %>
+
+                <script>
+                    <% if (flash.success && flash.success.length > 0) {%>
+                        new Noty({
+                            theme: 'sunset',
+                            text: '<%=flash.success%>',
+                            layout: 'topRight',
+                            timeout: 1500
+                        }).show()
+                        <% } %>
+                    <% if (flash.error && flash.error.length > 0) {%>
+                        new Noty({
+                            theme: 'sunset',
+                            text: '<%=flash.error%>',
+                            type: 'error',
+                            layout: 'topRight',
+                            timeout: 1500
+                        }).show()
+                        <% } %>
+                </script>
+</body>
+
+</html>

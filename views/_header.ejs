@@ -1,0 +1,26 @@
+<!-- Import the CSS file for the header. -->
+<link rel="stylesheet" href="../css/header.css">
+
+<!-- The `nav` element contains the navigation bar for the habit tracker app. -->
+<nav>
+
+    <!-- The `h1` element contains the title of the app. -->
+    <h1>Habbit Tracker</h1>
+
+    <!-- The `div` element contains the login and registration links. -->
+    <div>
+
+        <!-- If the user is logged in, display a welcome message and a logout link. -->
+        <% if (locals.user) { %>
+            <span>Welcome <b>
+                    <%= locals.user.name.split(' ')[0] %></b></span> |
+      <a href="/users/logout">Logout</a>
+    <% } else { %>
+      <!-- Otherwise, display login and registration links. -->
+      <a href="/users/login">Login</a> |
+      <a href="/users/register">Register</a>
+    <% } %>
+
+  </div>
+
+</nav>
